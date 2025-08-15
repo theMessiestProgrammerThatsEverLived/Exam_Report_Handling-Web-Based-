@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Management Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Narayana Junior College, PNM</h2>
+    <ul class="nav nav-tabs justify-content-center" id="roleTabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#admin">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#teacher">Teacher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#student">Student</a>
+      </li>
+    </ul>
+    <div class="tab-content p-4 border border-top-0 bg-white">
+      <div class="tab-pane fade show active" id="admin">
+        <form action="/login/admin" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+          <button class="btn btn-primary w-100"><i class="fas fa-user-shield"></i> Login as Admin</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="teacher">
+        <form action="/login/teacher" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+          <button class="btn btn-success w-100"><i class="fas fa-chalkboard-teacher"></i> Login as Teacher</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="student">
+        <form action="/login/student" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Admission Number</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+          <button class="btn btn-info w-100"><i class="fas fa-user-graduate"></i> Login as Student</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="text-center text-muted py-2 mt-5" style="position: fixed; bottom: 0; width: 100%; background-color: #f8f9fa;">
+    © 2025 Made by <a href="https://github.com/theMessiestProgrammerThatsEverLived" target="_blank" class="text-decoration-none">Tarun Shankar(TS)</a>  JR-JEE B
+  </footer>
+</body>
+</html>
