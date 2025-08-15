@@ -1,0 +1,134 @@
+<!-- admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Welcome Admin</h2>
+    <div class="text-end mb-3">
+      <a href="/logout" class="btn btn-outline-danger">Logout</a>
+    </div>
+    <!-- Edit Exams -->
+    <div class="card mb-4">
+      <div class="card-header">Manage Exams</div>
+      <div class="card-body">
+        <form action="/admin/edit_exams" method="POST" class="row g-3">
+          <div class="col-md-6">
+            <input type="text" name="exam_name" placeholder="New Exam Name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" name="add_exam" class="btn btn-success w-100">Add Exam</button>
+          </div>
+        </form>
+
+        <form action="/admin/edit_exams" method="POST" class="row g-3 mt-3">
+          <div class="col-md-6">
+            <select name="exam_to_remove" class="form-select" required>
+              {% for exam in exams %}
+              <option value="{{ exam }}">{{ exam }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" name="remove_exam" class="btn btn-danger w-100">Remove Exam</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Teachers -->
+    <div class="card">
+      <div class="card-header">Manage Teachers</div>
+      <div class="card-body">
+        <form action="/admin/edit_teachers" method="POST" class="row g-3">
+          <div class="col-md-5">
+            <input type="text" name="new_teacher" placeholder="Teacher Username" class="form-control" required>
+          </div>
+          <div class="col-md-5">
+            <input type="password" name="teacher_password" placeholder="Password" class="form-control" required>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" name="add_teacher" class="btn btn-success w-100">Add</button>
+          </div>
+        </form>
+
+        <form action="/admin/edit_teachers" method="POST" class="row g-3 mt-3">
+          <div class="col-md-10">
+            <select name="teacher_to_remove" class="form-select" required>
+              {% for name in teachers %}
+              <option value="{{ name }}">{{ name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" name="remove_teacher" class="btn btn-danger w-100">Remove</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Manage Students -->
+    <div class="card mt-4">
+      <div class="card-header">Manage Students</div>
+      <div class="card-body">
+
+        <!-- Add Single Student -->
+        <form action="/admin/add_student" method="POST" class="row g-3 mb-3">
+          <div class="col-md-5">
+            <input type="text" name="new_student" placeholder="Admission Number" class="form-control" required>
+          </div>
+          <div class="col-md-5">
+            <input type="password" name="student_password" placeholder="Password" class="form-control" required>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100">Add</button>
+          </div>
+        </form>
+
+        <!-- Remove Student -->
+        <form action="/admin/remove_student" method="POST" class="row g-3 mb-3">
+          <div class="col-md-10">
+            <input type="text" name="student_to_remove" class="form-control" placeholder="Admission Number" required>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-danger w-100">Remove</button>
+          </div>
+        </form>
+
+        <!-- Bulk Upload -->
+        <form action="/admin/upload_students" method="POST" enctype="multipart/form-data" class="row g-3">
+          <div class="col-md-10">
+            <input type="file" name="students_file" class="form-control" accept=".csv" required>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Bulk Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="text-center text-muted py-2 mt-5" style="position: fixed; bottom: 0; width: 100%; background-color: #f8f9fa;">
+    © 2025 Made by <a href="https://github.com/theMessiestProgrammerThatsEverLived" target="_blank" class="text-decoration-none">Tarun Shankar(TS)</a>  JR-JEE B
+  </footer>
+  <script>
+    let timeout = 5 * 60 * 1000; // 5 minutes in milliseconds
+    let timer = setTimeout(() => {
+      window.location.href = "/logout";
+    }, timeout);
+
+    document.addEventListener("mousemove", resetTimer);
+    document.addEventListener("keydown", resetTimer);
+
+    function resetTimer() {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        window.location.href = "/logout";
+      }, timeout);
+    }
+  </script>
+</body>
+</html>
